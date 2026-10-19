@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>서아가 골라봤어 · 영상별 상품</title>
+<meta name="description" content="서아가 골라봤어 쇼츠에 나온 상품을 영상 번호별로 모았습니다.">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f5;
+    --card: #ffffff;
+    --ink: #1d1b19;
+    --sub: #6b665f;
+    --line: #ebe6df;
+    --accent: #e8562a;
+    --accent-ink: #ffffff;
+    --chip: #f3efe9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #151413;
+      --card: #1f1d1b;
+      --ink: #f2efea;
+      --sub: #a39d94;
+      --line: #2e2b28;
+      --accent: #ff6a3d;
+      --accent-ink: #1a0f0a;
+      --chip: #2a2724;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 0 16px 48px; }
+
+  header { padding: 32px 0 16px; text-align: center; }
+  .avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    margin: 0 auto 12px; background: var(--chip);
+    display: grid; place-items: center; overflow: hidden;
+    font-size: 28px; font-weight: 700; color: var(--accent);
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  h1 { font-size: 22px; margin: 0; letter-spacing: -0.02em; }
+  .tagline { color: var(--sub); font-size: 14px; margin: 4px 0 0; }
+
+  .notice {
+    background: var(--chip); border-radius: 12px;
+    padding: 12px 14px; font-size: 12.5px; color: var(--sub);
+    margin: 16px 0;
+  }
+  .notice strong { color: var(--ink); font-weight: 600; }
+
+  .search {
+    position: sticky; top: 0; z-index: 2;
+    background: var(--bg); padding: 8px 0 12px;
+  }
+  .search input {
+    width: 100%; font: inherit; font-size: 16px;
+    padding: 12px 14px; border-radius: 12px;
+    border: 1px solid var(--line); background: var(--card); color: var(--ink);
+    outline: none;
+  }
+  .search input:focus { border-color: var(--accent); }
+
+  .ep {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 16px; padding: 16px; margin-bottom: 14px;
+    scroll-margin-top: 72px;
+  }
+  .ep-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .ep-no {
+    flex: none; font-size: 12px; font-weight: 700;
+    color: var(--accent-ink); background: var(--accent);
+    padding: 3px 8px; border-radius: 999px;
+  }
+  .ep-title { font-size: 16px; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+  .ep-date { color: var(--sub); font-size: 12px; margin: 0 0 10px; }
+
+  .item {
+    display: grid; grid-template-columns: 28px 1fr; gap: 10px;
+    padding: 12px 0; border-top: 1px solid var(--line);
+  }
+  .item:first-of-type { border-top: 0; }
+  .item-no {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--chip); display: grid; place-items: center;
+    font-size: 13px; font-weight: 700;
+  }
+  .item-name { font-size: 15px; font-weight: 600; margin: 0; word-break: keep-all; }
+  .item-fit { font-size: 13px; color: var(--sub); margin: 2px 0 8px; word-break: keep-all; }
+  .btn {
+    display: inline-block; text-decoration: none;
+    background: var(--ink); color: var(--bg);
+    font-size: 13px; font-weight: 600;
+    padding: 8px 14px; border-radius: 10px;
+  }
+  .btn[aria-disabled="true"] { opacity: .35; pointer-events: none; }
+
+  .empty { text-align: center; color: var(--sub); padding: 32px 0; font-size: 14px; }
+  footer { text-align: center; color: var(--sub); font-size: 11.5px; margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <!-- 서아 프로필 이미지를 같은 폴더에 seoa.jpg로 넣으면 표시됩니다 -->
+    <div class="avatar"><img src="seoa.jpg" alt="" onerror="this.remove()">서</div>
+    <h1>서아가 골라봤어</h1>
+    <p class="tagline">쇼츠에 나온 상품, 영상 번호로 찾아보세요</p>
+  </header>
+
+  <div class="notice">
+    <strong>이 페이지는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</strong><br>
+    서아는 AI 인플루언서입니다. 상품 시연은 실제 구매한 제품으로 촬영했어요.
+    가격과 재고는 쿠팡에서 확인해 주세요.
+  </div>
+
+  <div class="search">
+    <input id="q" type="search" inputmode="search" placeholder="영상 번호나 상품 이름 (예: 1, 문풍지)" aria-label="영상 번호나 상품 이름 검색">
+  </div>
+
+  <main id="list"></main>
+
+  <footer>© 서아가 골라봤어 · 경남콘텐츠제작소</footer>
+</div>
+
+<script>
+/*
+  ── 상품 추가하는 법 ──
+  새 영상을 올릴 때마다 EPISODES 맨 위에 하나씩 추가합니다.
+  link: 쿠팡 파트너스 "링크 생성"으로 만든 주소 (https://link.coupang.com/a/...)
+        비워 두면 버튼이 "준비 중"으로 표시됩니다.
+  fit : 이 상품이 맞는 사람·상황 한 줄 (효능·가격 표현은 쓰지 않습니다)
+*/
+const EPISODES = [
+  {
+    no: 1,
+    title: "자취방 외풍 막기 3종",
+    date: "2026-10",
+    items: [
+      { name: "생활더하기 5중날 투명문풍지 1+1", fit: "창틀 틈으로 바람이 들어올 때", link: "" },
+      { name: "탐사 국내생산 단열뽁뽁이 에어캡 무지", fit: "유리창이 차갑고 아침마다 물기가 맺힐 때", link: "" },
+      { name: "생활더하기 현관문 방화문 밀폐 고무패킹", fit: "현관문 틈으로 찬 바람이 샐 때", link: "" },
+    ],
+  },
+];
+
+const list = document.getElementById("list");
+const q = document.getElementById("q");
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+function render(filter) {
+  const f = (filter || "").trim().toLowerCase();
+  const eps = EPISODES.filter(ep =>
+    !f ||
+    String(ep.no) === f.replace(/^#?ep?\.?\s*/i, "") ||
+    ep.title.toLowerCase().includes(f) ||
+    ep.items.some(it => it.name.toLowerCase().includes(f))
+  );
+  if (!eps.length) {
+    list.innerHTML = '<p class="empty">찾는 영상이 없어요. 번호를 다시 확인해 주세요.</p>';
+    return;
+  }
+  list.innerHTML = eps.map(ep => `
+    <section class="ep" id="ep${ep.no}">
+      <div class="ep-head">
+        <span class="ep-no">${ep.no}번</span>
+        <h2 class="ep-title">${esc(ep.title)}</h2>
+      </div>
+      <p class="ep-date">${esc(ep.date)}</p>
+      ${ep.items.map((it, i) => `
+        <div class="item">
+          <span class="item-no">${i + 1}</span>
+          <div>
+            <p class="item-name">${esc(it.name)}</p>
+            <p class="item-fit">${esc(it.fit)}</p>
+            ${it.link
+              ? `<a class="btn" href="${esc(it.link)}" target="_blank" rel="sponsored nofollow noopener">쿠팡에서 보기</a>`
+              : `<a class="btn" aria-disabled="true">준비 중</a>`}
+          </div>
+        </div>`).join("")}
+    </section>`).join("");
+}
+
+q.addEventListener("input", e => render(e.target.value));
+
+// 주소 끝에 #ep1 처럼 붙이면 해당 영상으로 바로 이동
+const m = location.hash.match(/^#ep(\d+)$/);
+render();
+if (m) document.getElementById("ep" + m[1])?.scrollIntoView();
+</script>
+</body>
+</html>
